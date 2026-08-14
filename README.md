@@ -1,160 +1,166 @@
-\# 📊 HCLTech Finance RAG
+# 📊 HCLTech Finance RAG
 
+A Retrieval-Augmented Generation (RAG) application that allows users to ask questions about HCLTech FY26 quarterly financial reports and receive grounded answers based on the available financial documents.
 
+The application combines document retrieval, vector embeddings, ChromaDB, Ollama, Llama 3, and Streamlit to create a local financial question-answering system.
 
-A Retrieval-Augmented Generation (RAG) application that allows users to ask questions about HCLTech FY26 quarterly financial reports.
+## 🎯 Project Objective
 
+The objective of this project is to build a financial question-answering application using Retrieval-Augmented Generation (RAG).
 
+Instead of relying only on the general knowledge of an AI model, the system first retrieves relevant information from HCLTech FY26 financial reports and then provides that information as context to the language model.
 
-The system retrieves relevant information from HCLTech's financial reports and uses Llama 3 through Ollama to generate grounded answers.
+This helps the system generate answers that are grounded in the provided financial documents.
 
+## 💡 Key Features
 
+- Ask natural-language questions about HCLTech financial reports
+- Retrieve relevant financial information using semantic search
+- Generate embeddings using `nomic-embed-text`
+- Store and search document embeddings using ChromaDB
+- Generate grounded responses using Llama 3
+- Run the LLM locally using Ollama
+- Interactive Streamlit web interface
+- Display relevant source information along with answers
+- Supports questions related to revenue, EBIT, net income, quarterly performance, QoQ growth, and YoY growth
 
-\---
+## 🧠 What is RAG?
 
+RAG stands for **Retrieval-Augmented Generation**.
 
+It combines information retrieval with a Large Language Model.
 
-\## 🎯 Project Objective
+### RAG Workflow
 
+1. Load HCLTech financial reports.
+2. Extract text from the documents.
+3. Split the extracted text into smaller chunks.
+4. Generate embeddings using `nomic-embed-text`.
+5. Store the embeddings in ChromaDB.
+6. Convert the user's question into an embedding.
+7. Retrieve the most relevant document chunks.
+8. Provide the retrieved context to Llama 3.
+9. Generate a grounded financial answer.
+10. Display the answer and relevant source information.
 
-
-The objective of this project is to build a financial question-answering system using RAG.
-
-
-
-Instead of asking an AI model to answer from its general knowledge, this application retrieves relevant information from HCLTech's FY26 financial reports and uses that information to generate the answer.
-
-
-
-The system supports questions related to:
-
-
-
-\- Revenue
-
-\- EBIT
-
-\- Net Income
-
-\- Quarterly financial performance
-
-\- QoQ growth
-
-\- YoY growth
-
-
-
-\---
-
-
-
-\## 🧠 What is RAG?
-
-
-
-RAG stands for \*\*Retrieval-Augmented Generation\*\*.
-
-
-
-The system follows these steps:
-
-
-
-1\. Load HCLTech financial reports.
-
-2\. Extract text from PDF files.
-
-3\. Split the extracted text into smaller chunks.
-
-4\. Generate embeddings using `nomic-embed-text`.
-
-5\. Store the embeddings in ChromaDB.
-
-6\. Retrieve relevant chunks for a user's question.
-
-7\. Send the retrieved context to Llama 3.
-
-8\. Generate a grounded financial answer.
-
-9\. Display the answer and source documents.
-
-
-
-\---
-
-
-
-\## 🏗️ System Architecture
-
-
+## 🏗️ System Architecture
 
 ```text
+HCLTech FY26 Financial Reports
+            │
+            ▼
+      PDF Text Extraction
+            │
+            ▼
+        Text Chunking
+            │
+            ▼
+   Nomic Text Embeddings
+            │
+            ▼
+         ChromaDB
+            │
+            │
+      User Question
+            │
+            ▼
+    Question Embedding
+            │
+            ▼
+   Relevant Document Chunks
+            │
+            ▼
+          Llama 3
+            │
+            ▼
+     Grounded Answer
+            │
+            ▼
+     Streamlit Interface
+🛠️ Technologies Used
+Technology	Purpose
+Python	Application and RAG pipeline
+ChromaDB	Vector database and similarity search
+Ollama	Local AI model execution
+Llama 3	Financial answer generation
+Nomic Embed Text	Document and question embeddings
+Streamlit	Web application interface
+PyPDF	PDF text extraction
 
-HCLTech FY26 PDF Reports
+Finance-RAG-HCLTech/
+│
+├── data/
+│   └── Financial report data
+│
+├── src/
+│   ├── extract_text.py
+│   ├── chunk_text.py
+│   ├── create_vector_db.py
+│   └── rag.py
+│
+├── app.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 
-&#x20;         │
+🔐 Grounded Responses
 
-&#x20;         ▼
+The application is designed to answer questions using the retrieved financial document context rather than relying on unrelated external knowledge.
 
-&#x20;    PDF Extraction
+This helps reduce the possibility of generating unsupported financial figures.
 
-&#x20;         │
+👩‍💻 My Implementation
 
-&#x20;         ▼
+This project was implemented, configured, tested, and deployed as part of the HCLTech Campus Ambassador learning task.
 
-&#x20;     Text Files
+Work Completed
+Set up the Python-based RAG environment
+Configured Ollama for local AI model execution
+Set up nomic-embed-text for embeddings
+Created the ChromaDB vector database
+Configured the RAG retrieval pipeline
+Configured Llama 3 for answer generation
+Tested financial question answering
+Ran the application using Streamlit
+Verified the complete workflow from user question to generated answer
+Published the project on GitHub
+📚 Learning Outcomes
+Through this project, I gained practical experience with:
 
-&#x20;         │
+Retrieval-Augmented Generation (RAG)
+Large Language Models
+Vector databases
+Text embeddings
+Semantic search
+Context-based prompt generation
+Local AI models using Ollama
+Streamlit application development
+Git and GitHub
+Building an end-to-end AI application
+🔮 Future Improvements
 
-&#x20;         ▼
+Possible future enhancements include:
 
-&#x20;     Text Chunking
+Improved financial dashboard
+Better source citation and document references
+Comparison of multiple quarters
+Interactive financial charts
+Conversation history
+Support for additional financial reports
+Improved error handling for unrelated questions
+Downloadable financial analysis reports
+👤 Author
 
-&#x20;         │
+Rakshitha
 
-&#x20;         ▼
+GitHub: https://github.com/Rakshitha-22-tech
+📌 Project Status
 
-&#x20;  Nomic Text Embeddings
+Completed and tested successfully.
 
-&#x20;         │
+The current implementation supports document retrieval, embedding generation, vector search, Llama 3-based answer generation, and a Streamlit interface for asking questions about HCLTech financial reports.
 
-&#x20;         ▼
 
-&#x20;      ChromaDB
 
-&#x20;         │
 
-&#x20;         ▼
-
-&#x20;     User Question
-
-&#x20;         │
-
-&#x20;         ▼
-
-&#x20;  Question Embedding
-
-&#x20;         │
-
-&#x20;         ▼
-
-&#x20;Relevant Document Chunks
-
-&#x20;         │
-
-&#x20;         ▼
-
-&#x20;      Llama 3
-
-&#x20;         │
-
-&#x20;         ▼
-
-&#x20;   Financial Answer
-
-&#x20;         │
-
-&#x20;         ▼
-
-&#x20;     Source Chunks
-
+#
